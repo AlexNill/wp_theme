@@ -1,0 +1,32 @@
+@import 'components/mixins';
+
+//breakpoints
+//$row: 1240px;
+$w: 1140px;
+$mobile: 1100px;
+$md: 960px;
+$sm: 768px;
+$xs: 480px;
+
+//main color
+$c: #333333;
+$bg: #0C59AF;
+
+//social media color
+$facebook: #3b5993;
+$twitter: #55acee;
+$instagram: #181818;
+$linkedin: #0177b5;
+$pinterest: #bd1e23;
+$youtube: #f80000;
+
+$inputH: 40px;
+$font-base: 16px;
+$f: "open";
+$icons: "iconfont";
+$mb: 20px;
+
+@import 'components/flexbox';
+@import 'components/reset';
+@import 'components/code';
+@import 'components/rwd';

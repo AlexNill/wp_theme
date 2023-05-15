@@ -1,0 +1,44 @@
+
+
+
+
+
+
+/*.content {
+  ul {
+    margin: 0 0 20px 15px;
+    li {
+      padding: 5px 0 5px 15px;
+      position: relative;
+      &:before {
+        content: "";
+        background: $bg;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        position: absolute;
+        top: 15px;
+        left: 0;
+      }
+    }
+  }
+}*/
+
+//input[type="text"], input[type="email"], input[type="tel"], input[type="search"], input[type="password"], textarea {
+//  height: $inputH;
+//  width: 100%;
+//  border: 1px solid #ccc;
+//  background: #eee;
+//  padding: 0 10px;
+//  font-family: $f;
+//  font-size: rem(14);
+//  &:focus {
+//
+//  }
+//}
+
+//textarea {
+//  resize: none;
+//  height: 100px;
+//  padding: 10px;
+//}

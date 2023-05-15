@@ -1,0 +1,54 @@
+//Responsive Web Design
+@media screen and (max-width: 1024px) {
+  #menuOpen {
+    display: block;
+    &.opened {
+      & + #mainMenu {
+        @include transform(translateX(0));
+      }
+    }
+  }
+  #mainMenu {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    @include transform(translateX(100%));
+    @include transition();
+    background: rgba(26, 26, 26, 0.95);
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    ul {
+      li {
+        display: inline-block;
+        width: 100%;
+        a {
+          display: block;
+          margin: 0;
+          color: #fff;
+          font-size: 18px;
+          padding: 15px 3%;
+          border-bottom: 1px solid #000;
+        }
+        &:hover a {
+          background: none;
+        }
+        &.current-menu-item > a {
+          background: $bg;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 479px) {
+
+}
+
+@media screen and (max-width: 320px) {
+
+}
