@@ -1,44 +1,196 @@
-
-
-
-
-
-
-/*.content {
-  ul {
-    margin: 0 0 20px 15px;
-    li {
-      padding: 5px 0 5px 15px;
-      position: relative;
-      &:before {
-        content: "";
-        background: $bg;
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        position: absolute;
-        top: 15px;
+//MENU BUTTON
+$line: 4px;
+// The thickness of the button lines, also need to improve -> &:after {top: ?px} !
+$line-position: 18px;
+// The spacing between lines, also need to improve -> &:after {top: ?px} !
+$button-color: #fff;
+// The color of button
+#menuOpen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #222;
+  height: 50px;
+  display: none;
+  &.opened {
+    span {
+      &:before, &:after {
+        top: 0;
         left: 0;
+        right: 0;
+        background: $button-color;
+        @include box-shadow(none);
+      }
+      &:before {
+        @include backface-visibility();
+        @include transform(rotate(-45deg) translate(-7px, 7px));
+      }
+      &:after {
+        @include backface-visibility();
+        @include transform(rotate(45deg) translate(7px, 7px));
       }
     }
   }
-}*/
+  p {
+    margin-left: 3%;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 50px;
+  }
+  span {
+    @include center(false, true);
+    right: 3%;
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+    z-index: 300;
+    @include transition();
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: $line;
+      box-shadow: 0 $line 0 0 $button-color, 0 $line-position 0 0 $button-color;
+      -webkit-box-shadow: 0 $line 0 0 $button-color, 0 $line-position 0 0 $button-color;
+      -moz-box-shadow: 0 $line 0 0 $button-color, 0 $line-position 0 0 $button-color;
+      @include transition();
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 7px; // Need to improve if both $line-thickness and $line-position changed !
+      height: $line;
+      @include box-shadow(0 $line 0 0 $button-color);
+    }
+  }
+}
 
-//input[type="text"], input[type="email"], input[type="tel"], input[type="search"], input[type="password"], textarea {
-//  height: $inputH;
-//  width: 100%;
-//  border: 1px solid #ccc;
-//  background: #eee;
-//  padding: 0 10px;
-//  font-family: $f;
-//  font-size: rem(14);
-//  &:focus {
-//
-//  }
-//}
+@media screen and (min-width: 1025px) {
+  #mainMenu {
+    @include flex(0, 1, 715px);
+    margin-right: 20px;
+    >ul {
+      @include flexbox();
+      @include justify-content(space-between);
+    }
+    li {
+      margin: 10px;
+      &:hover, &.current-menu-item {
+        > a {
+          color: $c;
+        }
+        >.sub-menu {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      &.menu-item-has-children {
+        position: relative;
+        > a {
+          &::after {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-bottom: 1px solid $bg;
+            border-right: 1px solid $bg;
+            @include transform(rotate(45deg));
+            margin-left: 5px;
+            position: relative;
+            top: -3px;
+          }
+        }
+      }
+    }
+    a {
+      font-size: $font-base;
+      display: block;
+      color: $bg;
+      font-weight: 400;
+    }
+    ul.sub-menu {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      opacity: 0;
+      visibility: hidden;
+      width: 270px;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background: #fff;
+      font-size: 14px;
+      @include transition();
+      li {
+        position: relative;
+        padding: 2px 10px;
+        &:hover ul {
+          visibility: visible;
+          opacity: 1;
+          margin-top: 0;
+        }
+        &.menu-item-has-children {
+          > a {
+            &::after {
+              @include transform(rotate(-45deg));
+              top: -1px;
+            }
+          }
+        }
+      }
+      ul.sub-menu {
+        left: 100%;
+        top: -20px;
+      }
+    }
 
-//textarea {
-//  resize: none;
-//  height: 100px;
-//  padding: 10px;
-//}
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #menuOpen {
+    display: block;
+    &.opened {
+      & + #mainMenu {
+        @include transform(translateX(0));
+      }
+    }
+  }
+  #mainMenu {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    @include transform(translateX(100%));
+    @include transition();
+    background: rgba(26, 26, 26, 0.95);
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    ul {
+      li {
+        display: inline-block;
+        width: 100%;
+        a {
+          display: block;
+          margin: 0;
+          color: #fff;
+          font-size: 18px;
+          padding: 15px 3%;
+          border-bottom: 1px solid #000;
+        }
+        &:hover a {
+          background: none;
+        }
+        &.current-menu-item > a {
+          background: $bg;
+        }
+      }
+    }
+  }
+}
+
+
+

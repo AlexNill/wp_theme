@@ -41,38 +41,42 @@ $(document).ready(function () {
 
     });
     // ===END IMG TO SVG===
+    headerSize();
 
 });
 // ===END READY===
 
 $(window).on('load', function () {
     // swiper_example
-    // var swiper_example = new Swiper('.swiper_example', {
+    // const swiper = new Swiper('.swiper', {
+    //     // Optional parameters
     //     loop: true,
-    //     speed: 1000,
-    //     autoplay: {
-    //         delay: 4000
-    //     },
+    //
+    //     // If we need pagination
     //     pagination: {
     //         el: '.swiper-pagination',
-    //         dynamicBullets: true,
-    //         clickable: true
     //     },
+    //
+    //     // Navigation arrows
     //     navigation: {
-    //         prevEl: '.swiper-prev',
-    //         nextEl: '.swiper-next'
+    //         nextEl: '.swiper-button-next',
+    //         prevEl: '.swiper-button-prev',
     //     },
-    //     on: {
-    //         init: function () {
-    //             $('.swiper_example').addClass('slider_loaded');
-    //         }
-    //     },
-    //     breakpoints: {
-    //         640: {
-    //             slidesPerView: 2,
-    //             spaceBetween: 20
-    //         }
-    //     }
     // });
+
 });
 // ===END LOAD===
+
+$(window).resize(function () {
+    headerSize();
+});
+
+function headerSize() {
+    const $header = $('.site-header');
+
+    let offset = 0;
+    if ( $header.length ) {
+        offset = $header.outerHeight(true);
+        document.body.style.setProperty('--headerOffset', offset+'px');
+    }
+}
