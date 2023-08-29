@@ -153,6 +153,12 @@
   }
 }
 
+@mixin minmax($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content
+  }
+}
+
 @mixin transition($property: all, $duration: .3s, $easing: ease) {
   $transitions: ($property $duration $easing);
   @include prefixer('transition', $transitions);
@@ -194,5 +200,13 @@
   }
   &:-ms-input-placeholder {
     @content;
+  }
+}
+
+@mixin get-last {
+  >* {
+    &:last-child {
+      @content;
+    }
   }
 }

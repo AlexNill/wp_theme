@@ -245,18 +245,15 @@ a {
   @include transition();
   outline: 0;
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
     outline: 0;
-  }
-}
-
-.content {
-  ul {
-    margin-left: 3rem;
-    padding-bottom: 2rem;
-    li {
-      line-height: 1.4;
+    color: $c;
+    img {
+      opacity: .6;
     }
+  }
+  img {
+    @include transition();
   }
 }
 
@@ -326,12 +323,14 @@ i {
   }
 }
 
-@include for-size(mobile) {
-  .mobile_hide {
+@include for-size(1025px, min-width) {
+  .desktop-hide {
     display: none !important;
   }
-  .desctop_hide {
-    display: block !important;
+}
+@include for-size(1024px, max-width) {
+  .mobile-hide {
+    display: none !important;
   }
 }
 
@@ -395,6 +394,9 @@ i {
       border-radius: 5px;
       border: 1px solid $bg;
       line-height: $inputH;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       &:after {
         content: '';
         width: 0;
@@ -544,47 +546,54 @@ $button-color: #fff;
 }
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
   #mainMenu {
+    @include flex(0, 1, 715px);
+    margin-right: 20px;
     >ul {
-      font-size: 0;
-      >li {
-        display: inline-block;
-        vertical-align: top;
-        a {
-          font-size: 14px;
-          display: block;
-        }
-        &:hover a, &.current-menu-item a {
-
-        }
-        ul {
-          margin-top: 20px;
-          opacity: 0;
-          visibility: hidden;
-          width: 270px;
-          position: absolute;
-          left: 0;
-          top: 100%;
-          background: $bg;
-          font-size: 14px;
-          @include transition();
-          li {
-            position: relative;
-            padding: 5px 10px;
-            &:hover ul {
-              visibility: visible;
-              opacity: 1;
-              margin-top: 0;
-            }
-            ul {
-              left: 270px;
-              top: 0;
-            }
+      @include flexbox();
+      @include justify-content(space-between);
+      ul {
+        margin-top: 20px;
+        opacity: 0;
+        visibility: hidden;
+        width: 270px;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background: $bg;
+        font-size: 14px;
+        @include transition();
+        li {
+          position: relative;
+          padding: 5px 10px;
+          &:hover ul {
+            visibility: visible;
+            opacity: 1;
+            margin-top: 0;
+          }
+          ul {
+            left: 270px;
+            top: 0;
           }
         }
       }
     }
+    li {
+      margin: 10px;
+      &:hover, &.current-menu-item {
+        > a {
+          color: $bg;
+        }
+      }
+    }
+    a {
+      font-size: $font-base;
+      display: block;
+      color: $c;
+      font-weight: 600;
+    }
+
   }
 }
 
