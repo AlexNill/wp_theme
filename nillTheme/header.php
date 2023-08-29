@@ -20,7 +20,7 @@
 <div id="main">
     <header class="site-header" >
         <div class="wrapper">
-            <?php if ( $logo = get_field('logo_header') ) { ?>
+            <?php if ( $logo = get_field('logo_header', 'option') ) { ?>
                 <a href="<?php echo get_option('home') ?>" class="logo">
                     <?= wp_get_attachment_image($logo, 'medium_large'); ?>
                 </a>
@@ -29,5 +29,6 @@
             <nav id="mainMenu">
                 <?php wp_nav_menu(array('container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location'  => 'main_menu')); ?>
             </nav>
+            <?= some(); ?>
         </div>
     </header>
