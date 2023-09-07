@@ -20,7 +20,7 @@ if (is_home()) {
                         <div class="info">
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             <time datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date(get_option('date_format_custom')); ?></time>
-                            <p><?php echo wp_trim_words(get_the_content(), 40); ?></p>
+                            <p><?php echo wp_trim_words(strip_shortcodes(get_the_content()), 20, "..."); ?></p>
                             <a class="read" href="<?php the_permalink(); ?>">Read more ></a>
                         </div>
                     </div>
