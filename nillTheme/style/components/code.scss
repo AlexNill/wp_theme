@@ -153,6 +153,7 @@ $button-color: #fff;
 @media screen and (max-width: 1024px) {
   #menuOpen {
     display: block;
+    z-index: 102;
     &.opened {
       & + #mainMenu {
         @include transform(translateX(0));
@@ -169,10 +170,23 @@ $button-color: #fff;
     right: 0;
     bottom: 0;
     overflow: auto;
+    z-index: 101;
     ul {
       li {
         display: inline-block;
         width: 100%;
+        &.menu-item-has-children {
+          padding-right: 40px;
+          position: relative;
+          &::after {
+            content: '+';
+            position: absolute;
+            right: 13px;
+            top: 13px;
+            font-size: 20px;
+            color: #fff;
+          }
+        }
         a {
           display: block;
           margin: 0;
@@ -186,6 +200,15 @@ $button-color: #fff;
         }
         &.current-menu-item > a {
           background: $bg;
+        }
+      }
+    }
+    .sub-menu {
+      display: none;
+      padding-left: 20px;
+      li {
+        a {
+          padding: 10px 3%;
         }
       }
     }

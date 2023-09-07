@@ -8,6 +8,15 @@ $(document).ready(function () {
         $(this).toggleClass("opened");
     });
 
+    if ( $(window).width() < 1025 ) {
+        $('#mainMenu a').click(function (e) {
+            e.stopPropagation();
+        });
+        $('#mainMenu .menu-item-has-children').click(function () {
+            $(this).toggleClass('active').children('.sub-menu').slideToggle();
+        });
+    }
+
     // ===IMG TO SVG===
     $('img.img_svg').each(function () {
         var $img = jQuery(this);

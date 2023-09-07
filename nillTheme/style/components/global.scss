@@ -331,4 +331,7 @@ div.wpcf7 {
   left: 0;
   width: 100%;
   z-index: 100;
+  @include for-size(1024px) {
+    top: 50px;
+  }
 }

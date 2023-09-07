@@ -360,19 +360,21 @@
 @function strip-units($value) {
   @return ($value / ($value * 0 + 1));
 }
-@mixin boxGrid($columnNumber, $spacingPercent) {
+@mixin boxGrid($columnNumber, $spacing, $justification: flex-start, $align: stretch) {
   $contentPercent: 100%;
-  $sideMargin: ($spacingPercent/2);
-  $marginInt: strip-units($sideMargin);
-  @include justify-content(flex-start);
-  @include flex-flow(wrap);
+  $margin: strip-units($spacing)/2;
+
   @include transition();
   @include flexbox();
-  margin: #{0} -#{$sideMargin};
-  width: $contentPercent + $spacingPercent;
+  @include flex-flow(wrap);
+  @include justify-content($justification);
+  @include align-items($align);
+
+  width: calc(100% + #{$spacing});
+  margin: 0 -#{$margin}px;
   > * {
-    width: ($contentPercent/$columnNumber) - $spacingPercent;
-    margin: 0 #{$sideMargin} ($marginInt + ($marginInt / $columnNumber) * 1em)
+    @include flex-basis( calc( (#{$contentPercent} / #{$columnNumber}) - #{$spacing} ) );
+    margin: 0 #{$margin}px calc(2*#{$margin}px) #{$margin}px;
   }
 }
 

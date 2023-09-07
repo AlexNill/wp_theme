@@ -63,6 +63,11 @@ function my_theme_register_required_plugins()
             'required' => false,
         ),
         array(
+            'name' => 'ACF Content Analysis for Yoast SEO',
+            'slug' => 'acf-content-analysis-for-yoast-seo',
+            'required' => false,
+        ),
+        array(
             'name' => 'TinyMCE Advanced',
             'slug' => 'tinymce-advanced',
             'required' => false,
