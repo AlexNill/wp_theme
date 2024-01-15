@@ -117,6 +117,15 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#000000', GradientType=0); /* IE6-9 */
 }
 
+@function vw($value) {
+  $vwPx: (1920*.01) * 1px;
+  @return ($value/$vwPx) * 1vw;
+}
+
+@function setClamp($max, $min) {
+  @return clamp($min, vw($max), $max);
+}
+
 // @include for-size(md) {}
 @mixin for-size($size, $direction: max-width) {
 
