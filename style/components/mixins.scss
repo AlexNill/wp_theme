@@ -123,7 +123,12 @@
 }
 
 @function setClamp($max, $min) {
-  @return clamp($min, vw($max), $max);
+  $mod: ($max - $min) / (1920px - 1024px);
+  $first: $max - 1920px * $mod;
+  $last: 100vw * 0.004;
+  $sum: calc(#{$first} + #{$last});
+
+  @return clamp($min, $sum, $max);
 }
 
 // @include for-size(md) {}
