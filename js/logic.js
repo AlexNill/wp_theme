@@ -51,6 +51,7 @@ $(document).ready(function () {
     });
     // ===END IMG TO SVG===
     headerSize();
+    switchHeader();
 
 });
 // ===END READY===
@@ -76,8 +77,13 @@ $(window).on('load', function () {
 });
 // ===END LOAD===
 
+$(window).scroll(function () {
+    switchHeader();
+});
+
 $(window).resize(function () {
     headerSize();
+    switchHeader();
 });
 
 function headerSize() {
@@ -87,5 +93,17 @@ function headerSize() {
     if ( $header.length ) {
         offset = $header.outerHeight(true);
         document.body.style.setProperty('--headerOffset', offset+'px');
+    }
+}
+
+function switchHeader() {
+    const $header = $('.site-header');
+    if ( $header.length ) {
+        const offset = $(window).scrollTop();
+        if ( offset > 5 ) {
+            $header.addClass('active');
+        } else {
+            $header.removeClass('active');
+        }
     }
 }
