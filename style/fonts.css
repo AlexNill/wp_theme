@@ -83,6 +83,8 @@
 .icon-export-1:before { content: '\e819'; } /* '' */
 .icon-mail-1:before { content: '\e81a'; } /* '' */
 .icon-tiktok:before { content: '\e81b'; } /* '' */
+.icon-eventbrite:before { content: '\e81c'; } /* '' */
+.icon-chat:before { content: '\e81d'; } /* '' */
 .icon-twitter-1:before { content: '\f099'; } /* '' */
 .icon-facebook:before { content: '\f09a'; } /* '' */
 .icon-pinterest-circled:before { content: '\f0d2'; } /* '' */
@@ -106,4 +108,5 @@
 .icon-twitter:before { content: '\f302'; } /* '' */
 .icon-twitter-squared:before { content: '\f304'; } /* '' */
 .icon-facebook-squared:before { content: '\f308'; } /* '' */
+.icon-linkedin-squared:before { content: '\f30c'; } /* '' */
 .icon-instagram-filled:before { content: '\f31f'; } /* '' */
